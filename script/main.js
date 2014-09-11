@@ -37,7 +37,7 @@ window.renderer = (function () {
   
   renderer.beforeRedraw = function (dt) {
     //dt /= 1000;
-    dt = 6 / 1000;
+    dt = 20 / 1000;
 
     for (var i = 0, len = bodies.length; i < len; i++) {
       bodies[i].x += bodies[i].vx * dt + forces[i].x / (2 * bodies[i].mass) * dt * dt;
