@@ -3,6 +3,7 @@ window.renderer = (function () {
   renderer.drawPath = true;
   var ox = 200;
   var oy = 100;
+
   renderer.addBody({
     x: ox + 100,
     y: oy + 0,
@@ -26,14 +27,17 @@ window.renderer = (function () {
     vx: 220,
     vy: 0
   });
+
   
   var G = 1;
   
   var bodies = renderer.bodies;
   var forces = getForces(bodies, G);
+  console.log(forces);
   
   renderer.beforeRedraw = function (dt) {
-    dt /= 1000;
+    //dt /= 1000;
+    dt = 6 / 1000;
 
     for (var i = 0, len = bodies.length; i < len; i++) {
       bodies[i].x += bodies[i].vx * dt + forces[i].x / (2 * bodies[i].mass) * dt * dt;
