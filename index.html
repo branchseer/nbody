@@ -11,28 +11,24 @@
 <body>
   <canvas id="path"></canvas>
   <canvas id="world"></canvas>
+  <script type="text/javascript" src="script/main.js"></script>
 
-  <div id="controller">
-    <input id="startBtn" type="button" value="start" />
+  <script type="text/javascript" src="vendor/angular.min.js"></script>
+  <script type="text/javascript" src="script/controller.js"></script>
+  <div id="nbodyApp" ng-app="nbody">
+    <div id="controller" ng-controller="nbodyController">
+      <input type="button" id="playBtn" ng-value="started ? 'pause': 'start'" ng-click="togglePlay()" />
+      <ul id="bodyList">
+        <li ng-repeat="body in bodies">
+          <h3>Body {{$index}}</h3>
+          <p>mass: {{body.mass.toPrecision(precision)}}</p>
+          <p>x: {{body.x.toPrecision(precision)}} y: {{body.y.toPrecision(precision)}}</p>
+          <p>vx: {{body.vx.toPrecision(precision)}} vy: {{body.vy.toPrecision(precision)}}</p>
+        </li>
+      </ul>
+    </div>
   </div>
 
-  <script type="text/javascript" src="script/main.js"></script>
-  <script type="text/javascript">
-  //<!--
-  var $startBtn = document.getElementById('startBtn');
-
-  $startBtn.onclick = function () {
-    if (renderer.started) {
-      renderer.pauseAnimation();
-      this.value = 'start';
-    }
-    else {
-      renderer.startAnimation();
-      this.value = 'pause';
-    }
-  }
-  //-->
-  </script>
   <!--<script type="text/javascript" src="vendor/coffee-script.js"></script>-->
 </body>
 </html>
