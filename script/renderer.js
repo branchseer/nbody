@@ -85,7 +85,6 @@ window.Renderer = (function () {
   };
 
   Renderer.prototype.startAnimation = function () {
-    console.log(1);
     this.started = true;
     var self = this;
 
